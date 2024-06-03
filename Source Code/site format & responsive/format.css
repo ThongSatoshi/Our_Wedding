@@ -1,10 +1,30 @@
+/* Common */
 body {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
 }
 
+.sectionBreak {
+  background-color: #ffb4b4;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  align-content: center;
+}
+
+.sectionTitle {
+  color: #ffffff;
+  font-size: 60px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+/* Page Header */
 #navigationMenu {
-  background-color: rgb(255, 180, 180);
+  background-color: #ffb4b4;
   overflow-x: hidden;
   overflow-y: hidden;
   padding-left: 45%;
@@ -14,7 +34,7 @@ body {
 }
 
 .menuTab {
-  color: rgb(255, 255, 255) !important;
+  color: #ffffff !important;
   padding: 15px;
   font-size: 20px;
   font-family: sans-serif;
@@ -25,22 +45,22 @@ body {
 }
 
 i {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
 }
 
 .menuTab:hover {
-  background-color: rgb(255, 120, 120);
+  background-color: #ff7878;
 }
 
 #imgWrapper {
-  background-color: rgb(255, 180, 180);
+  background-color: #ffb4b4;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   align-items: center;
   scroll-margin: 10px;
   scrollbar-width: 10px;
-  scrollbar-color: rgb(252, 120, 120) rgb(255, 180, 180);
+  scrollbar-color: #fc7878 #ffb4b4;
 }
 
 .targetImg {
@@ -52,6 +72,42 @@ i {
 }
 
 .targetImg:hover {
-  background-color: rgb(255, 150, 150);
+  background-color: #ff9696;
   opacity: 0.5;
+}
+
+/* Page Body - Our Story */
+.storyPanel {
+  background-color: #ffb4b4;
+}
+
+#storyImg1 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 350px;
+  width: 500px;
+  padding: 7px;
+  float: left;
+  transform: translate(20%, 5%) rotate(-5deg);
+}
+
+#storyImg2 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 350px;
+  width: 500px;
+  padding: 7px;
+  transform: translate(-60%, 100%) rotate(10deg);
+}
+
+#story1 {
+  color: #ffffff;
+  font-size: 22px;
+  width: 600px;
+  padding: 5px;
+  word-break: keep-all;
+  margin-left: 50%;
+  transform: translateY(-55%);
 }
