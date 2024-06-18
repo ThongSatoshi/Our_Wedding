@@ -1,168 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save the Date</title>
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="image\miscellaneous\favicon_sitelogo.png"
-    />
-    <link rel="stylesheet" href="site format & responsive\format.css" />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
+    <!-- Favicon Logo -->
+    <link rel="icon" type="image/x-icon" href="image\miscellaneous\favicon_sitelogo.png">
+    <!-- Credit to https://glyphicons.com/ -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="site format\format.css">
   </head>
 
   <body>
-    <section id="splashScreen">
+    <div id="splashScreen">
       <div id="splashContent">
-        <img
-          class="splashSiteLogo"
-          src="image\miscellaneous\favicon_sitelogo.png"
-        />
-        <p class="splashSiteName">Save the Date</p>
-        <span class="splashProgressBar"><span class="progress"></span></span>
+        <img id="splashSiteLogo" src="image\miscellaneous\favicon_sitelogo.png">
+        <p id="splashSiteName">Save the Date</p>
+        <span id="splashLoadingBar"><span id="loadingProgress"></span></span>
       </div>
-    </section>
+    </div>
 
-    <section id="pageContent">
-      <div id="pageHeader">
+    <div id="pageContent">
+      <section id="pageHeader">
         <div id="navigationMenu">
-          <a class="menuTab" href="#home"
-            ><i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;
-            <div class="menuTitle">
-              <span class="menuTitleEN">Home</span
-              ><span class="menuTitleJP">ホーム</span>
-            </div></a
-          >
-          <a class="menuTab" href="#ourStory"
-            ><i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;
-            <div class="menuTitle">
-              <span class="menuTitleEN">Our Story</span
-              ><span class="menuTitleJP">ぼくらの物語</span>
-            </div></a
-          >
-          <a class="menuTab" href="#theDate"
-            ><i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;
-            <div class="menuTitle">
-              <span class="menuTitleEN">Our Special Date</span
-              ><span class="menuTitleJP">ぼくらの結婚日</span>
-            </div></a
-          >
-          <a class="menuTab" href="#contact"
-            ><i class="glyphicon glyphicon-qrcode"></i>&nbsp;&nbsp;
-            <div class="menuTitle">
-              <span class="menuTitleEN">Contacts</span
-              ><span class="menuTitleJP">連絡情報</span>
-            </div></a
-          >
-          <a class="menuTab" href="#credit"
-            ><i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;
-            <div class="menuTitle">
-              <span class="menuTitleEN">Credits</span
-              ><span class="menuTitleJP">クレジット</span>
-            </div></a
-          >
+          <div id="headerContainer">
+            <img id="siteLogo" src="image\miscellaneous\favicon_sitelogo.png">
+            <p id="siteName">Save the Date</p>
+          </div>
+          <a class="menuTab" href="#pageHeader">
+            <i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;
+            <ul class="menuTitle">
+              <li class="menuTitleEN">Home</li>
+              <li class="menuTitleJP">ホーム</li>
+            </ul>
+          </a>
+          <a class="menuTab" href="#ourStoryPage">
+            <i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;
+            <ul class="menuTitle">
+              <li class="menuTitleEN">Our Story</li>
+              <li class="menuTitleJP">ぼくらの物語</li>
+            </ul>
+          </a>
+          <a class="menuTab" href="#theDate">
+            <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;
+            <ul class="menuTitle">
+              <li class="menuTitleEN">Our Special Date</li>
+              <li class="menuTitleJP">ぼくらの結婚日</li>
+            </ul>
+          </a>
+          <a class="menuTab" href="#contact">
+            <i class="glyphicon glyphicon-qrcode"></i>&nbsp;&nbsp;
+            <ul class="menuTitle">
+              <li class="menuTitleEN">Contacts</li>
+              <li class="menuTitleJP">連絡情報</li>
+            </ul>
+          </a>
+          <a class="menuTab" href="#credit">
+            <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;
+            <ul class="menuTitle">
+              <li class="menuTitleEN">Credits</li>
+              <li class="menuTitleJP">クレジット</li>
+            </ul>
+          </a>
         </div>
 
         <div id="imgWrapper">
-          <img
-            class="targetImg"
-            src="image\wedding photos\img1_by 八三.png"
-            alt="Wedding Photo 1"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img2_by 八三.png"
-            alt="Wedding Photo 2"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img3_by 一斗まる.png"
-            alt="Wedding Photo 3"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img4_by おむたつ.png"
-            alt="Wedding Photo 4"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img5_by 乙れん.png"
-            alt="Wedding Photo 5"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img6_by ピノキオピー.png"
-            alt="Wedding Photo 6"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img7_by おむたつ.png"
-            alt="Wedding Photo 7"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img8_by DDANGBI.png"
-            alt="Wedding Photo 8"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img9_by 千夜QYS3.png"
-            alt="Wedding Photo 9"
-          />
-          <img
-            class="targetImg"
-            src="image\wedding photos\img10_by アマネレイ.png"
-            alt="Wedding Photo 10"
-          />
+          <!-- <a id="previousImgBtn">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          </a>
+          <a id="nextImgBtn">
+            <i class="glyphicon glyphicon-chevron-right"></i>
+          </a> -->
+          <div id="imgWrapperContainer">
+            <img id="weddingPhoto1" class="weddingPhoto" src="image\wedding photos\img1_by 八三.png" alt="Wedding Photo 1">
+            <img id="weddingPhoto2" class="weddingPhoto" src="image\wedding photos\img2_by 八三.png" alt="Wedding Photo 2">
+            <img id="weddingPhoto3" class="weddingPhoto" src="image\wedding photos\img3_by 一斗まる.png" alt="Wedding Photo 3">
+            <img id="weddingPhoto4" class="weddingPhoto" src="image\wedding photos\img4_by おむたつ.png" alt="Wedding Photo 4">
+            <img id="weddingPhoto5" class="weddingPhoto" src="image\wedding photos\img5_by 乙れん.png" alt="Wedding Photo 5">
+            <img id="weddingPhoto6" class="weddingPhoto" src="image\wedding photos\img6_by ピノキオピー.png" alt="Wedding Photo 6">
+            <img id="weddingPhoto7" class="weddingPhoto" src="image\wedding photos\img7_by おむたつ.png" alt="Wedding Photo 7">
+            <img id="weddingPhoto8" class="weddingPhoto" src="image\wedding photos\img8_by DDANGBI.png" alt="Wedding Photo 8">
+            <img id="weddingPhoto9" class="weddingPhoto" src="image\wedding photos\img9_by 千夜QYS3.png" alt="Wedding Photo 9">
+            <img id="weddingPhoto10" class="weddingPhoto" src="image\wedding photos\img10_by アマネレイ.png" alt="Wedding Photo 10">
+          </div>
         </div>
-      </div>
+
+        <button id="topBtn">
+          <i class="glyphicon glyphicon-arrow-up"></i>
+        </button>
+      </section>
 
       <div class="sectionBreak">
-        <hr
-          style="
-            background-color: #ffffff;
-            color: #ffffff;
-            border: none;
-            height: 2px;
-            width: 40%;
-          "
-        />
+        <hr style="background-color: #ffffff; color: #ffffff; border: none; height: 2px; width: 40%;">
       </div>
 
       <section id="ourStoryPage">
-        <h1
-          class="sectionTitle"
-          style="
-            background-image: linear-gradient(#fce0e0, #ffdcdc);
-            color: #ffffff;
-          "
-        >
+        <h1 id="storyPanelTitle" style="background-image: linear-gradient(#f9dfdf, #ffffff); color: #ffffff;">
           ぼくらの物語 - Our Story
         </h1>
+
         <div class="storyPanel">
-          <br />
-          <img
-            id="storyImg1"
-            src="image\wedding photos\img1_by 八三.png"
-            alt="Wedding Photo 1"
-          />
-          <img
-            id="storyImg2"
-            src="image\wedding photos\img2_by 八三.png"
-            alt="Wedding Photo 2"
-          />
+          <br>
+          <img id="storyImg1" src="image\wedding photos\img1_by 八三.png" alt="Wedding Photo 1">
+          <img id="storyImg2" src="image\wedding photos\img2_by 八三.png" alt="Wedding Photo 2">
           <p id="story1">
             死んだ変数で繰り返す。数え事が孕んだ熱。どこに送るあてもなく。あわれな独り言を記している。
             電撃と見紛うような恐怖が血管の中に混ざる。微粒子の濃い煙の向こうに黒い鎖鎌がついてきている。
             消去しても×8　無くならないの。とうに潰れていた喉。叫んだ音は既に列を成さないで。
             安楽椅子の上　腐りきった三日月が笑っている。もう　すぐそこまで×8　なにかが来ている。
-            <br />
-            <br />
+            <br>
+            <br>
             大声で泣いた後　救いの旗に火を放つ人々とコレクションにキスをして。
             甘んじて棺桶にこもる骸骨がまた　どうかしてる×8　そう囁いた。
             未来永劫誰もが救われる理想郷があったなら、そう口を揃えた大人たちが乗り込んだ船は爆ぜた。
@@ -172,6 +119,8 @@
           </p>
         </div>
       </section>
-    </section>
+    </div>
+
+    <script src="js/styling_and_animations.js"></script>
   </body>
 </html>

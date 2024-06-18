@@ -1,0 +1,388 @@
+/* Body Style */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  z-index: 0;
+}
+
+/* Splash Screen Animations */
+#splashScreen {
+  background-image: linear-gradient(#ffb4b4, #f9dfdf);
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  animation-name: rollUpSplashScreen;
+  animation-duration: 1s;
+  animation-delay: 10s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rollUpSplashScreen {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+    height: 50%;
+  }
+
+  100% {
+    opacity: 0;
+    width: 0%;
+    height: 0%;
+    display: none;
+  }
+}
+
+#splashSiteLogo {
+  height: 14vh;
+  width: 7vw;
+  margin-top: 30vh;
+  margin-left: 48vw;
+  animation-name: bounceSiteLogo;
+  animation-duration: 3s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounceSiteLogo {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-25px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+#splashSiteName {
+  position: fixed;
+  font-size: 4vw;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif, cursive;
+  margin-top: 3vh;
+  margin-left: 85vh;
+  animation-name: spinSiteName;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+
+@keyframes spinSiteName {
+  0% {
+    transform: rotateX(90deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+#splashLoadingBar {
+  position: relative;
+  display: block;
+  background-color: #cecece;
+  border-radius: 5px;
+  height: 2.5vh;
+  width: 40vw;
+  margin-top: 20vh;
+  margin-left: 65vh;
+}
+
+#loadingProgress {
+  position: relative;
+  display: inline-block;
+  border-radius: 5px;
+  min-height: 2.5vh;
+  max-height: 2.5vh;
+  width: 40vw;
+  margin-top: 0vh;
+  margin-left: 0vh;
+  animation-name: fillLoadingBar;
+  animation-duration: 8s;
+  animation-delay: 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes fillLoadingBar {
+  0% {
+    width: 0%;
+    background-color: #ff7878;
+  }
+
+  45% {
+    width: 45%;
+    background-color: #ff7878;
+  }
+
+  100% {
+    width: 100%;
+    background-color: #ff7878;
+  }
+}
+
+/* Innit */
+#pageContent {
+  width: 0%;
+  height: 0%;
+  overflow: hidden;
+  z-index: 999;
+  animation-name: innitPageContent;
+  animation-duration: 1s;
+  animation-delay: 9s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes innitPageContent {
+  0%,
+  100% {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+
+/* Section Break */
+.sectionBreak {
+  background-image: linear-gradient(#ffb4b4, #f9dfdf);
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  align-content: center;
+}
+
+/* Page Header */
+#navigationMenu {
+  background-color: #ffb4b4;
+  position: fixed;
+  overflow: hidden;
+  height: auto;
+  width: 99vw;
+  padding-left: 45vw;
+  padding-right: 0;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  z-index: 998;
+}
+
+#siteLogo {
+  position: fixed;
+  max-width: 9vw;
+  max-height: 9vh;
+  min-width: 3vw;
+  min-height: 3vh;
+  transform: translateX(-43vw);
+}
+
+#siteName {
+  position: fixed;
+  color: #ffffff;
+  font-size: 2.2vw;
+  font-style: italic;
+  font-family: "Times New Roman", Times, serif, cursive;
+  text-align: center;
+  margin-top: 1.5vh;
+  transform: translateX(-37vw);
+}
+
+.menuTab {
+  color: #ffffff !important;
+  text-align: left !important;
+  text-decoration: none !important;
+  display: inline-block;
+  border-radius: 10px;
+  max-width: fit-content;
+  min-height: 10vh;
+  max-height: 10vh;
+}
+
+.menuTitle {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 0.5vh;
+  margin-right: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  padding: 0;
+}
+
+.menuTitleEN {
+  font-size: 1.5vw;
+  font-style: italic;
+  font-family: "Times New Roman", Times, sans-serif;
+}
+
+.menuTitleJP {
+  font-size: 1vw;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+i:nth-of-type(1) {
+  color: #ffffff;
+  font-size: 1.5vw;
+  margin-top: 2.5vh;
+  margin-left: 1vw;
+  float: left;
+}
+
+.menuTab:hover {
+  background-color: #ff7878;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+i:hover {
+  animation-name: shakeWhenHovered;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shakeWhenHovered {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-12px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+#topBtn {
+  position: fixed;
+  color: none;
+  border: 0;
+  border-radius: 20px;
+  height: fit-content;
+  width: fit-content;
+  padding: 1.5vw;
+  transform: translate(92vw, -5vh);
+  display: none;
+  z-index: 998;
+}
+
+i:only-child {
+  color: #ffffff;
+  font-size: 2vw;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+#topBtn:hover {
+  background-color: #ff7878;
+}
+
+/* Wedding Photo Wrapper */
+#imgWrapper {
+  background-color: #ffb4b4;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+#imgWrapperContainer {
+  margin-top: 12vh;
+  margin-bottom: 2vh;
+}
+
+.weddingPhoto {
+  max-height: 500px;
+  max-width: 800px;
+  padding-top: 2vh;
+  padding-bottom: 1.5vh;
+  padding-left: 0.4vw;
+  padding-right: 0.4vw;
+  display: inline-block;
+}
+
+.weddingPhoto:hover {
+  background-color: #fea5a5;
+  opacity: 0.5;
+}
+
+/* #previousImgBtn {
+  background-color: #000000;
+  opacity: 0.5;
+  text-decoration: none;
+  min-height: 64vh;
+  max-width: 3vw;
+  padding-left: 0.5vw;
+  padding-top: 27vh;
+  transform: translateY(10vh);
+  z-index: 997;
+}
+
+#nextImgBtn {
+  background-color: #000000;
+  opacity: 0.5;
+  text-decoration: none;
+  min-height: 64vh;
+  max-width: 3vw;
+  padding-left: 0.5vw;
+  padding-top: 27vh;
+  transform: translateX(1000vw);
+  transform: translateY(66.3vh);
+  z-index: 997;
+} */
+
+/* Page Body - Our Story */
+.storyPanel {
+  background-color: #f9dfdf;
+}
+
+#storyPanelTitle {
+  font-size: 60px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+#storyImg1 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 350px;
+  width: 500px;
+  padding: 7px;
+  float: left;
+  transform: translate(20%, 5%) rotate(-5deg);
+}
+
+#storyImg2 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 350px;
+  width: 500px;
+  padding: 7px;
+  transform: translate(-60%, 100%) rotate(10deg);
+}
+
+#story1 {
+  color: #000000;
+  font-size: 22px;
+  width: 600px;
+  padding: 5px;
+  word-break: keep-all;
+  margin-left: 50%;
+  transform: translateY(-55%);
+}
