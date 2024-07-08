@@ -2,8 +2,10 @@ let topBtn = document.getElementById("topBtn");
 let pageContent = document.getElementById("pageContent");
 let navigationMenu = document.getElementById("navigationMenu");
 let headerContainer = document.getElementById("headerContainer");
+let siteLogo = document.getElementById("siteLogo");
+let siteName = document.getElementById("siteName");
 
-pageContent.onscroll = function () {
+pageContent.onscroll = () => {
   shrinkNavigationMenu();
   showTopBtn();
 };
@@ -32,20 +34,22 @@ function shrinkNavigationMenu() {
   }
 }
 
-// Show topBtn when scrolls down past x amount of px
-function showTopBtn() {
-  if (pageContent.scrollTop > 1000) {
-    topBtn.style.display = "block";
-  } else {
-    return (topBtn.style.display = "none");
-  }
+// Autoscroll animation for wedding photos
+let weddingPhotoIdArr = [];
+for (i = 1; i < 11; i++) {
+  var str = "weddingPhoto" + i;
+  weddingPhotoIdArr.push(str);
+  console.log(weddingPhotoIdArr);
 }
 
-// When the user clicks on the button, scroll to the top of the document
-topBtn.onclick = function () {
-  scrollTopFunction();
-};
+if (pageContent.style.width == "100%" && pageContent.style.height == "100%") {
+  window.setInterval(autoScrollImg(false), 10000);
+}
 
-function scrollTopFunction() {
-  pageContent.scrollTop = 0;
+function autoScrollImg(isStop) {
+  if (isStop == false) {
+    console.log((n += 1));
+  } else {
+    return;
+  }
 }
