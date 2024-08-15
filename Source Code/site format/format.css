@@ -25,8 +25,8 @@ body {
     opacity: 1;
   }
 
-  50% {
-    opacity: 0.5;
+  30% {
+    opacity: 0.25;
     height: 50%;
   }
 
@@ -39,10 +39,10 @@ body {
 }
 
 #splashSiteLogo {
-  height: 14vh;
-  width: 7vw;
-  margin-top: 30vh;
-  margin-left: 48vw;
+  min-height: 10%;
+  max-width: 10%;
+  margin-top: 15rem;
+  margin-left: 70rem;
   animation-name: bounceSplashSiteLogo;
   animation-duration: 3s;
   animation-delay: 1s;
@@ -66,12 +66,11 @@ body {
 }
 
 #splashSiteName {
-  position: fixed;
-  font-size: 4vw;
+  font-size: 6rem;
   font-style: italic;
   font-family: "Times New Roman", Times, serif, cursive;
-  margin-top: 3vh;
-  margin-left: 85vh;
+  margin-top: 3rem;
+  margin-left: 62rem;
   animation-name: spinSplashSiteName;
   animation-duration: 2s;
   animation-iteration-count: 1;
@@ -92,21 +91,18 @@ body {
   display: block;
   background-color: #cecece;
   border-radius: 5px;
-  height: 2.5vh;
-  width: 40vw;
-  margin-top: 20vh;
-  margin-left: 65vh;
+  min-height: 2rem;
+  max-width: 75rem;
+  margin-top: 7rem;
+  margin-left: 40rem;
 }
 
 #loadingProgress {
   position: relative;
-  display: inline-block;
+  display: block;
   border-radius: 5px;
-  min-height: 2.5vh;
-  max-height: 2.5vh;
-  width: 40vw;
-  margin-top: 0vh;
-  margin-left: 0vh;
+  min-height: 2rem;
+  max-width: 75rem;
   animation-name: fillLoadingBar;
   animation-duration: 8s;
   animation-delay: 1s;
@@ -169,15 +165,15 @@ body {
   position: fixed;
   overflow: hidden;
   height: auto;
-  min-width: 99vw;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  min-width: 99%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   z-index: 998;
 }
 
 #headerContainer {
-  width: 44vw;
-  margin-left: 2vw;
+  min-width: 44%;
+  margin-left: 3rem;
   display: block;
 }
 
@@ -187,33 +183,16 @@ body {
 }
 
 @media screen and (min-width: 961px) {
-  #siteLogo  {
-    max-width: 9vw;
-    max-height: 9vh;
+  #siteLogo {
+    max-width: 7.5rem;
+    min-height: 7.5rem;
   }
 }
 
 @media screen and (max-width: 960px) {
-  #siteLogo  {
-    max-width: 7.5vw;
-    max-height: 7.5vh;
-  }
-}
-
-
-@keyframes bounceSiteLogo {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-12px);
-  }
-  60% {
-    transform: translateY(-7px);
+  #siteLogo {
+    max-width: 5rem;
+    min-height: 5rem;
   }
 }
 
@@ -222,8 +201,9 @@ body {
   font-size: 0;
   text-align: center;
   display: inline-block;
-  margin-top: 1.5vh;
-  margin-left: 5.5vw;
+  margin-top: 1rem;
+  margin-left: 10rem;
+  margin-right: 35rem;
 }
 
 #siteName span {
@@ -239,14 +219,14 @@ body {
 }
 
 @media screen and (min-width: 961px) {
-  #siteName span  {
-    font-size: 2.5vw;
+  #siteName span {
+    font-size: 3.5rem;
   }
 }
 
 @media screen and (max-width: 960px) {
-  #siteName span  {
-    font-size: 3.5vw;
+  #siteName span {
+    font-size: 2.75rem;
   }
 }
 
@@ -272,24 +252,24 @@ body {
 }
 
 @media screen and (min-width: 961px) {
-  .menuTab  {
-    max-height: 12vh;
+  .menuTab {
+    min-height: 20%;
   }
 }
 
 @media screen and (max-width: 960px) {
   .menuTab {
-    max-height: 15vh;
+    min-height: 10%;
   }
 }
 
 .menuTitle {
   list-style-type: none;
   display: inline-block;
-  margin-left: 0.5vh;
-  margin-right: 2vh;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   padding: 0;
 }
 
@@ -304,41 +284,41 @@ body {
 }
 
 @media screen and (min-width: 961px) {
-  .menuTitleEN  {
-    font-size: 1.5vw;
+  .menuTitleEN {
+    font-size: 2.25rem;
   }
 
   .menuTitleJP {
-    font-size: 1vw;
+    font-size: 1.5rem;
   }
 }
 
 @media screen and (max-width: 960px) {
   .menuTitleEN {
-    font-size: 2vw;
+    font-size: 2rem;
   }
 
   .menuTitleJP {
-    font-size: 1.5vw;
+    font-size: 1rem;
   }
 }
 
 i:nth-of-type(1) {
   color: #ffffff;
-  margin-top: 2.5vh;
-  margin-left: 1vw;
+  margin-top: 2.5rem;
+  margin-left: 1.5rem;
   float: left;
 }
 
 @media screen and (min-width: 961px) {
-  i:nth-of-type(1)  {
-    font-size: 1.5vw;
+  i:nth-of-type(1) {
+    font-size: 2.5rem;
   }
 }
 
 @media screen and (max-width: 960px) {
   i:nth-of-type(1) {
-    font-size: 2vw;
+    font-size: 2rem;
   }
 }
 
@@ -376,15 +356,15 @@ i:hover {
   border-radius: 20px;
   height: fit-content;
   width: fit-content;
-  padding: 1.5vw;
-  transform: translate(92vw, -5vh);
+  padding: 2.5rem;
+  transform: translate(92vw, 1vh);
   display: none;
   z-index: 998;
 }
 
 i:only-child {
   color: #ffffff;
-  font-size: 2vw;
+  font-size: 3.5rem;
   margin-top: 0;
   margin-left: 0;
 }
@@ -507,14 +487,14 @@ i:only-child {
   font-style: italic;
   margin: 0;
   padding-top: 17vh;
-  padding-bottom: 20vh;
+  padding-bottom: 5vh;
   text-align: center;
 }
 
 #shortClipPanel {
-  background-color: #ffffff;
+  background-color: #fff0f0;
 }
 
 #shortClip {
-  margin-left: 15vw;
+  margin-left: 25rem;
 }
