@@ -13,26 +13,27 @@ pageContent.onscroll = () => {
 
 // Shrink navigation menu and rearrange menu tabs when scrolls down past x amount of px
 function shrinkNavigationMenu() {
-  // if (pageContent.scrollTop > 80) {
-  //   navigationMenu.style.minWidth = "70vw";
-  //   navigationMenu.style.paddingLeft = "9vw";
-  //   navigationMenu.style.paddingTop = "0.25vh";
-  //   navigationMenu.style.paddingBottom = "0.25vh";
-  //   navigationMenu.style.borderBottomLeftRadius = "10px";
-  //   navigationMenu.style.borderBottomRightRadius = "10px";
-  //   navigationMenu.style.boxShadow = "8px 8px #ff7878";
-  //   navigationMenu.style.transform = "translateX(15vw)";
-  //   headerContainer.style.display = "none";
-  // } else {
-  //   navigationMenu.style.minWidth = "99vw";
-  //   navigationMenu.style.paddingLeft = "45vw";
-  //   navigationMenu.style.paddingTop = "1vh";
-  //   navigationMenu.style.paddingBottom = "1vh";
-  //   navigationMenu.style.borderRadius = "0";
-  //   navigationMenu.style.boxShadow = "none";
-  //   navigationMenu.style.transform = "translate(0)";
-  //   headerContainer.style.display = "block";
-  // };
+  if (pageContent.scrollTop > 80) {
+    navigationMenu.style.minWidth = "70%";
+    navigationMenu.style.paddingLeft = "10rem";
+    navigationMenu.style.paddingTop = "0.5rem";
+    navigationMenu.style.paddingBottom = "0.5rem";
+    navigationMenu.style.borderBottomLeftRadius = "10px";
+    navigationMenu.style.borderBottomRightRadius = "10px";
+    navigationMenu.style.boxShadow = "8px 8px #ff7878";
+    navigationMenu.style.transform = "translateX(25%)";
+    headerContainer.style.display = "none";
+  } else {
+    navigationMenu.style.minWidth = "99%";
+    navigationMenu.style.paddingLeft = "0";
+    navigationMenu.style.paddingTop = "1rem";
+    navigationMenu.style.paddingBottom = "1rem";
+    navigationMenu.style.borderBottomLeftRadius = "0";
+    navigationMenu.style.borderBottomRightRadius = "0";
+    navigationMenu.style.boxShadow = "none";
+    navigationMenu.style.transform = "translateX(0)";
+    headerContainer.style.display = "block";
+  };
 };
 
 // Autoscroll animation for wedding photos
