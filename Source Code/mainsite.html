@@ -23,59 +23,73 @@
     <div id="pageContent">
       <section id="pageHeader">
         <div id="navigationMenu">
-          <div id="headerContainer">
-            <img id="siteLogo" src="image\miscellaneous\favicon_sitelogo.png">
-            <p id="siteName">
-              <span style="--i:1;">S</span>
-              <span style="--i:2;">a</span>
-              <span style="--i:3;">v</span>
-              <span style="--i:4;">e</span>
-              <span style="--i:5;">&nbsp;</span>
-              <span style="--i:6;">t</span>
-              <span style="--i:7;">h</span>
-              <span style="--i:8;">e</span>
-              <span style="--i:9;">&nbsp;</span>
-              <span style="--i:10;">D</span>
-              <span style="--i:11;">a</span>
-              <span style="--i:12;">t</span>
-              <span style="--i:13;">e</span>
-            </p>
-          </div>
-          <a class="menuTab" href="#pageHeader">
-            <i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;
-            <ul class="menuTitle">
-              <li class="menuTitleEN">Home</li>
-              <li class="menuTitleJP">ホーム</li>
-            </ul>
-          </a>
-          <a class="menuTab" href="#ourStoryPage">
-            <i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;
-            <ul class="menuTitle">
-              <li class="menuTitleEN">Our Story</li>
-              <li class="menuTitleJP">ぼくらの物語</li>
-            </ul>
-          </a>
-          <a class="menuTab" href="#theDate">
-            <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;
-            <ul class="menuTitle">
-              <li class="menuTitleEN">Our Special Date</li>
-              <li class="menuTitleJP">ぼくらの結婚日</li>
-            </ul>
-          </a>
-          <a class="menuTab" href="#contact">
-            <i class="glyphicon glyphicon-qrcode"></i>&nbsp;&nbsp;
-            <ul class="menuTitle">
-              <li class="menuTitleEN">Contacts</li>
-              <li class="menuTitleJP">連絡情報</li>
-            </ul>
-          </a>
-          <a class="menuTab" href="#credit">
-            <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;
-            <ul class="menuTitle">
-              <li class="menuTitleEN">Credits</li>
-              <li class="menuTitleJP">クレジット</li>
-            </ul>
-          </a>
+          <table >
+            <tr>
+              <td id="headerContainer">
+                  <img id="siteLogo" src="image\miscellaneous\favicon_sitelogo.png">
+                  <p id="siteName">
+                    <span class="siteNameAnimated" style="--i:1;">S</span>
+                    <span class="siteNameAnimated" style="--i:2;">a</span>
+                    <span class="siteNameAnimated" style="--i:3;">v</span>
+                    <span class="siteNameAnimated" style="--i:4;">e</span>
+                    <span class="siteNameAnimated" style="--i:5;">&nbsp;</span>
+                    <span class="siteNameAnimated" style="--i:6;">t</span>
+                    <span class="siteNameAnimated" style="--i:7;">h</span>
+                    <span class="siteNameAnimated" style="--i:8;">e</span>
+                    <span class="siteNameAnimated" style="--i:9;">&nbsp;</span>
+                    <span class="siteNameAnimated" style="--i:10;">D</span>
+                    <span class="siteNameAnimated" style="--i:11;">a</span>
+                    <span class="siteNameAnimated" style="--i:12;">t</span>
+                    <span class="siteNameAnimated" style="--i:13;">e</span>
+                  </p>
+              </td>
+              <td>
+                <a class="menuTab" href="#pageHeader">
+                  <i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;
+                  <ul class="menuTitle">
+                    <li class="menuTitleEN">Home</li>
+                    <li class="menuTitleJP">ホーム</li>
+                  </ul>
+                </a>
+              </td>
+              <td>
+                <a class="menuTab" href="#ourStoryPage">
+                  <i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;
+                  <ul class="menuTitle">
+                    <li class="menuTitleEN">Our Story</li>
+                    <li class="menuTitleJP">ぼくらの物語</li>
+                  </ul>
+                </a>
+              </td>
+              <td>
+                <a class="menuTab" href="#theDate">
+                  <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;
+                  <ul class="menuTitle">
+                    <li class="menuTitleEN">Our Special Date</li>
+                    <li class="menuTitleJP">ぼくらの結婚日</li>
+                  </ul>
+                </a>
+              </td>
+              <td>
+                <a class="menuTab" href="#contact">
+                  <i class="glyphicon glyphicon-qrcode"></i>&nbsp;&nbsp;
+                  <ul class="menuTitle">
+                    <li class="menuTitleEN">Contacts</li>
+                    <li class="menuTitleJP">連絡情報</li>
+                  </ul>
+                </a>
+              </td>
+              <td>
+                <a class="menuTab" href="#credit">
+                  <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;
+                  <ul class="menuTitle">
+                    <li class="menuTitleEN">Credits</li>
+                    <li class="menuTitleJP">クレジット</li>
+                  </ul>
+                </a>
+              </td>
+            </tr>
+          </table>
         </div>
 
         <div id="imgWrapper">
@@ -104,8 +118,8 @@
         </button>
       </section>
 
-      <div class="sectionBreak">
-        <hr style="background-color: #ffffff; color: #ffffff; border: none; height: 2px; width: 40%;">
+      <div class="sectionBreak" style="background-image: linear-gradient(#ffb4b4, #f9dfdf);">
+        <hr style="background-color:#ffffff; color: #ffffff; border: none; height: 3px; width: 40%;">
       </div>
 
       <section id="ourStoryPage">
@@ -113,25 +127,78 @@
           ぼくらの物語 - Our Story
         </h1>
 
-        <div class="storyPanel">
+        <div id="storyPanel">
           <br>
-          <img id="storyImg1" src="image\wedding photos\img1_by 八三.png" alt="Wedding Photo 1">
-          <img id="storyImg2" src="image\wedding photos\img2_by 八三.png" alt="Wedding Photo 2">
-          <p id="story1">
-            死んだ変数で繰り返す。数え事が孕んだ熱。どこに送るあてもなく。あわれな独り言を記している。
-            電撃と見紛うような恐怖が血管の中に混ざる。微粒子の濃い煙の向こうに黒い鎖鎌がついてきている。
-            消去しても×8　無くならないの。とうに潰れていた喉。叫んだ音は既に列を成さないで。
-            安楽椅子の上　腐りきった三日月が笑っている。もう　すぐそこまで×8　なにかが来ている。
-            <br>
-            <br>
-            大声で泣いた後　救いの旗に火を放つ人々とコレクションにキスをして。
-            甘んじて棺桶にこもる骸骨がまた　どうかしてる×8　そう囁いた。
-            未来永劫誰もが救われる理想郷があったなら、そう口を揃えた大人たちが乗り込んだ船は爆ぜた。
-            黒い星が×8　彼らを見ている。哭いた閃光が目に刺さる。お別れの鐘が鳴る。
-            神が成した歴史の結ぶ答えは砂の味がする。死んだ変数で繰り返す。数え事が孕んだ熱。
-            誰かのすんだ瞳の色をした星に問いかけている。
-          </p>
+          <table>
+            <tr>
+              <td>
+                <img id="storyImg1" src="image\wedding photos\img1_by 八三.png" alt="Wedding Photo 1">
+                <img id="storyImg2" src="image\wedding photos\img2_by 八三.png" alt="Wedding Photo 2">
+              </td>
+              <td>
+                <p id="story1">
+                  死んだ変数で繰り返す。数え事が孕んだ熱。どこに送るあてもなく。あわれな独り言を記している。
+                  電撃と見紛うような恐怖が血管の中に混ざる。微粒子の濃い煙の向こうに黒い鎖鎌がついてきている。
+                  消去しても×8　無くならないの。とうに潰れていた喉。叫んだ音は既に列を成さないで。
+                  安楽椅子の上　腐りきった三日月が笑っている。もう　すぐそこまで×8　なにかが来ている。
+                  <br>
+                  <br>
+                  大声で泣いた後　救いの旗に火を放つ人々とコレクションにキスをして。
+                  甘んじて棺桶にこもる骸骨がまた　どうかしてる×8　そう囁いた。
+                  未来永劫誰もが救われる理想郷があったなら、そう口を揃えた大人たちが乗り込んだ船は爆ぜた。
+                  黒い星が×8　彼らを見ている。哭いた閃光が目に刺さる。お別れの鐘が鳴る。
+                  神が成した歴史の結ぶ答えは砂の味がする。死んだ変数で繰り返す。数え事が孕んだ熱。
+                  誰かのすんだ瞳の色をした星に問いかけている。
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p id="story2">
+                  死んだ変数で繰り返す。数え事が孕んだ熱。どこに送るあてもなく。あわれな独り言を記している。
+                  電撃と見紛うような恐怖が血管の中に混ざる。微粒子の濃い煙の向こうに黒い鎖鎌がついてきている。
+                  消去しても×8　無くならないの。とうに潰れていた喉。叫んだ音は既に列を成さないで。
+                  安楽椅子の上　腐りきった三日月が笑っている。もう　すぐそこまで×8　なにかが来ている。
+                  <br>
+                  <br>
+                  大声で泣いた後　救いの旗に火を放つ人々とコレクションにキスをして。
+                  甘んじて棺桶にこもる骸骨がまた　どうかしてる×8　そう囁いた。
+                  未来永劫誰もが救われる理想郷があったなら、そう口を揃えた大人たちが乗り込んだ船は爆ぜた。
+                  黒い星が×8　彼らを見ている。哭いた閃光が目に刺さる。お別れの鐘が鳴る。
+                  神が成した歴史の結ぶ答えは砂の味がする。死んだ変数で繰り返す。数え事が孕んだ熱。
+                  誰かのすんだ瞳の色をした星に問いかけている。
+                </p>
+              </td>
+              <td>
+                <img id="storyImg3" src="image\wedding photos\img3_by 一斗まる.png" alt="Wedding Photo 3">
+                <img id="storyImg4" src="image\wedding photos\img4_by おむたつ.png" alt="Wedding Photo 4">
+              </td>
+            </tr>
+          </table>
+          <br>
         </div>
+        
+        <h1 id="storyPanelEnd" style="background-image: linear-gradient(#ffdada, #ffffff); color: #ffffff;">
+          結果的で．．．一緒にもう一歩踏み出すのを決めた
+          <br>
+          And thus... we decided to step one step further
+        </h1>
+
+        <div id="shortClipPanel">
+          <video id="shortClip" height="720" width="1080" controls>
+            <source src="video\engagement_ceremony.mp4" type="video/mp4">
+            <source src="video\engagement_ceremony.webm" type="video/webm">
+            Error: it seems like your browser does not support this video format.
+          </video>
+        </div>
+      </section>
+
+      <div class="sectionBreak">
+        <hr style="background-color:#000000; color: #000000; border: none; height: 3px; width: 40%;">
+      </div>
+
+      <section id="theDate">
+
       </section>
     </div>
 

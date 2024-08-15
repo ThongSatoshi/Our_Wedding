@@ -156,7 +156,7 @@ body {
 
 /* Section Break */
 .sectionBreak {
-  background-image: linear-gradient(#ffb4b4, #f9dfdf);
+  position: static;
   height: 100px;
   margin: 0;
   padding: 0;
@@ -169,28 +169,37 @@ body {
   position: fixed;
   overflow: hidden;
   height: auto;
-  width: 99vw;
-  padding-left: 45vw;
-  padding-right: 0;
+  min-width: 99vw;
   padding-top: 1vh;
   padding-bottom: 1vh;
   z-index: 998;
 }
 
-#siteLogo {
-  position: fixed;
-  max-width: 9vw;
-  max-height: 9vh;
-  min-width: 3vw;
-  min-height: 3vh;
-  transform: translateX(-43vw) !important;
+#headerContainer {
+  width: 44vw;
+  margin-left: 2vw;
+  display: block;
 }
 
-#siteLogo:hover {
-  animation-name: bounceSiteLogo;
-  animation-duration: 1.5s;
-  animation-iteration-count: infinite;
+#siteLogo {
+  position: fixed;
+  display: inline-block;
 }
+
+@media screen and (min-width: 961px) {
+  #siteLogo  {
+    max-width: 9vw;
+    max-height: 9vh;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  #siteLogo  {
+    max-width: 7.5vw;
+    max-height: 7.5vh;
+  }
+}
+
 
 @keyframes bounceSiteLogo {
   0%,
@@ -209,24 +218,36 @@ body {
 }
 
 #siteName {
-  position: fixed;
   color: #ffffff;
   font-size: 0;
   text-align: center;
+  display: inline-block;
   margin-top: 1.5vh;
-  transform: translateX(-37.5vw);
+  margin-left: 5.5vw;
 }
 
 #siteName span {
   position: relative;
-  font-size: 2.3vw;
   font-style: italic;
   font-family: "Times New Roman", Times, serif, cursive;
+  font-weight: 500;
   animation-name: wavingText;
   animation-duration: 1.5s;
   animation-timing-function: ease;
   animation-iteration-count: infinite;
   animation-delay: calc(0.1s * var(--i));
+}
+
+@media screen and (min-width: 961px) {
+  #siteName span  {
+    font-size: 2.5vw;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  #siteName span  {
+    font-size: 3.5vw;
+  }
 }
 
 @keyframes wavingText {
@@ -248,8 +269,18 @@ body {
   display: inline-block;
   border-radius: 10px;
   max-width: fit-content;
-  min-height: 10vh;
-  max-height: 10vh;
+}
+
+@media screen and (min-width: 961px) {
+  .menuTab  {
+    max-height: 12vh;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .menuTab {
+    max-height: 15vh;
+  }
 }
 
 .menuTitle {
@@ -263,23 +294,52 @@ body {
 }
 
 .menuTitleEN {
-  font-size: 1.5vw;
   font-style: italic;
   font-family: "Times New Roman", Times, sans-serif;
 }
 
 .menuTitleJP {
-  font-size: 1vw;
   font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
     "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
+@media screen and (min-width: 961px) {
+  .menuTitleEN  {
+    font-size: 1.5vw;
+  }
+
+  .menuTitleJP {
+    font-size: 1vw;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .menuTitleEN {
+    font-size: 2vw;
+  }
+
+  .menuTitleJP {
+    font-size: 1.5vw;
+  }
+}
+
 i:nth-of-type(1) {
   color: #ffffff;
-  font-size: 1.5vw;
   margin-top: 2.5vh;
   margin-left: 1vw;
   float: left;
+}
+
+@media screen and (min-width: 961px) {
+  i:nth-of-type(1)  {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  i:nth-of-type(1) {
+    font-size: 2vw;
+  }
 }
 
 .menuTab:hover {
@@ -362,7 +422,7 @@ i:only-child {
 }
 
 /* Page Body - Our Story */
-.storyPanel {
+#storyPanel {
   background-color: #ffdada;
 }
 
@@ -381,9 +441,9 @@ i:only-child {
   border-radius: 5px;
   height: 330px;
   width: 500px;
+  margin-left: 10vw;
   padding: 7px;
-  float: left;
-  transform: translate(20%, 5%) rotate(-5deg);
+  transform: rotate(-5deg);
 }
 
 #storyImg2 {
@@ -392,8 +452,34 @@ i:only-child {
   border-radius: 5px;
   height: 330px;
   width: 500px;
+  margin-top: 2vh;
+  margin-left: 15vw;
   padding: 7px;
-  transform: translate(-60%, 100%) rotate(10deg);
+  transform: rotate(10deg);
+}
+
+#storyImg3 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 330px;
+  width: 500px;
+  margin-top: 20vh;
+  margin-right: 5vw;
+  padding: 7px;
+  transform: rotate(3deg);
+}
+
+#storyImg4 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 330px;
+  width: 500px;
+  margin-top: 2vh;
+  margin-right: 5vw;
+  padding: 7px;
+  transform: rotate(-15deg);
 }
 
 #story1 {
@@ -402,6 +488,33 @@ i:only-child {
   width: 600px;
   padding: 5px;
   word-break: keep-all;
-  margin-left: 50%;
-  transform: translateY(-55%);
+  margin-left: 3vw;
+}
+
+#story2 {
+  color: #ffffff;
+  font-size: 22px;
+  width: 600px;
+  padding: 5px;
+  word-break: keep-all;
+  margin-top: 15vh;
+  margin-left: 10vw;
+}
+
+#storyPanelEnd {
+  font-size: 40px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  padding-top: 17vh;
+  padding-bottom: 20vh;
+  text-align: center;
+}
+
+#shortClipPanel {
+  background-color: #ffffff;
+}
+
+#shortClip {
+  margin-left: 15vw;
 }
