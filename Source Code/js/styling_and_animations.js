@@ -14,7 +14,7 @@ pageContent.onscroll = () => {
 // Shrink navigation menu and rearrange menu tabs when scrolls down past x amount of px
 function shrinkNavigationMenu() {
   if (pageContent.scrollTop > 80) {
-    navigationMenu.style.minWidth = "70%";
+    navigationMenu.style.minWidth = "67%";
     navigationMenu.style.paddingLeft = "10rem";
     navigationMenu.style.paddingTop = "0.5rem";
     navigationMenu.style.paddingBottom = "0.5rem";
