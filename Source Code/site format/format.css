@@ -8,7 +8,7 @@ body {
 
 /* Splash Screen Animations */
 #splashScreen {
-  background-image: linear-gradient(#ffb4b4, #f9dfdf);
+  background-image: linear-gradient(#ffb0b0, #f9dfdf);
   overflow: hidden;
   width: 100%;
   height: 100%;
@@ -161,7 +161,7 @@ body {
 
 /* Page Header */
 #navigationMenu {
-  background-color: #ffb4b4;
+  background-color: #ffb0b0;
   position: fixed;
   overflow: hidden;
   height: auto;
@@ -375,7 +375,7 @@ i:only-child {
 
 /* Wedding Photo Wrapper */
 #imgWrapper {
-  background-color: #ffb4b4;
+  background-color: #ffb0b0;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -403,7 +403,7 @@ i:only-child {
 
 /* Page Body - Our Story */
 #storyPanel {
-  background-color: #ffdada;
+  background-color: #ffcaca;
 }
 
 #storyPanelTitle {
@@ -413,14 +413,15 @@ i:only-child {
   margin: 0;
   padding-bottom: 50px;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 #storyImg1 {
   background-color: #eeeeee;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  height: 330px;
-  width: 500px;
+  height: 350px;
+  width: 550px;
   margin-left: 10vw;
   padding: 7px;
   transform: rotate(-5deg);
@@ -430,8 +431,8 @@ i:only-child {
   background-color: #eeeeee;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  height: 330px;
-  width: 500px;
+  height: 350px;
+  width: 550px;
   margin-top: 2vh;
   margin-left: 15vw;
   padding: 7px;
@@ -442,43 +443,61 @@ i:only-child {
   background-color: #eeeeee;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  height: 330px;
-  width: 500px;
-  margin-top: 20vh;
-  margin-right: 5vw;
+  height: 300px;
+  width: 450px;
+  margin-top: 15rem;
+  margin-right: 5rem;
   padding: 7px;
-  transform: rotate(3deg);
+  transform: rotate(7deg);
 }
 
 #storyImg4 {
   background-color: #eeeeee;
   border: 1px solid #dddddd;
   border-radius: 5px;
-  height: 330px;
-  width: 500px;
-  margin-top: 2vh;
-  margin-right: 5vw;
+  height: 300px;
+  width: 450px;
+  margin-top: 2rem;
+  margin-right: 5rem;
   padding: 7px;
   transform: rotate(-15deg);
 }
 
+#storyImg5 {
+  background-color: #eeeeee;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+  height: 300px;
+  width: 450px;
+  margin-top: 10rem;
+  margin-right: 5rem;
+  padding: 7px;
+  transform: rotate(-3deg);
+}
+
+
 #story1 {
   color: #ffffff;
   font-size: 22px;
+  font-weight: 550;
+  line-height: 1.6;
   width: 600px;
   padding: 5px;
   word-break: keep-all;
-  margin-left: 3vw;
+  margin-left: 5rem;
 }
 
 #story2 {
   color: #ffffff;
   font-size: 22px;
+  font-weight: 550;
+  line-height: 1.6;
   width: 600px;
   padding: 5px;
   word-break: keep-all;
-  margin-top: 15vh;
-  margin-left: 10vw;
+  margin-top: 13rem;
+  margin-left: 12rem;
+  margin-right: 5rem;
 }
 
 #storyPanelEnd {
@@ -489,12 +508,23 @@ i:only-child {
   padding-top: 17vh;
   padding-bottom: 5vh;
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 #shortClipPanel {
-  background-color: #fff0f0;
+  background-color: #ffcaca;
 }
 
 #shortClip {
-  margin-left: 25rem;
+  margin-left: 23rem;
+  margin-bottom: 5rem;
+}
+
+#theDateTitle {
+  font-size: 60px;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
