@@ -48,7 +48,7 @@
                   <i class="glyphicon glyphicon-home"></i>&nbsp;&nbsp;
                   <ul class="menuTitle">
                     <li class="menuTitleEN">Home</li>
-                    <li class="menuTitleJP">ホーム</li>
+                    <li class="menuTitleCN">首頁</li>
                   </ul>
                 </a>
               </td>
@@ -57,7 +57,7 @@
                   <i class="glyphicon glyphicon-heart"></i>&nbsp;&nbsp;
                   <ul class="menuTitle">
                     <li class="menuTitleEN">Our Story</li>
-                    <li class="menuTitleJP">ぼくらの物語</li>
+                    <li class="menuTitleCN">我們的故事</li>
                   </ul>
                 </a>
               </td>
@@ -66,7 +66,7 @@
                   <i class="glyphicon glyphicon-calendar"></i>&nbsp;&nbsp;
                   <ul class="menuTitle">
                     <li class="menuTitleEN">Our Special Date</li>
-                    <li class="menuTitleJP">ぼくらの特別な日</li>
+                    <li class="menuTitleCN">我們最特別的日子</li>
                   </ul>
                 </a>
               </td>
@@ -75,7 +75,7 @@
                   <i class="glyphicon glyphicon-qrcode"></i>&nbsp;&nbsp;
                   <ul class="menuTitle">
                     <li class="menuTitleEN">Contacts</li>
-                    <li class="menuTitleJP">連絡情報</li>
+                    <li class="menuTitleCN">聯絡信息</li>
                   </ul>
                 </a>
               </td>
@@ -84,7 +84,7 @@
                   <i class="glyphicon glyphicon-info-sign"></i>&nbsp;&nbsp;
                   <ul class="menuTitle">
                     <li class="menuTitleEN">Credits</li>
-                    <li class="menuTitleJP">クレジット</li>
+                    <li class="menuTitleCN">致謝名單</li>
                   </ul>
                 </a>
               </td>
@@ -124,7 +124,7 @@
 
       <section id="ourStoryPage">
         <h1 id="storyPanelTitle" style="background-color:#ffcaca; color: #f0f0f0;">
-          ぼくらの物語 - Our Story
+          Our Story - 我們的故事
         </h1>
 
         <div id="storyPanel">
@@ -186,16 +186,16 @@
         </div>
         
         <h1 id="storyPanelEnd" style="background-color:#ffcaca; color: #f0f0f0;">
-          And thus... we decided to go one step further
+          And thus, we decided to go one step further together...
           <br>
           <br>
-          結果で．．．一緒にもう一歩踏み出すのを決めた
+          因此、我們決定了一起更進一步．．．
         </h1>
 
         <div id="shortClipPanel">
           <video id="shortClip" height="720" width="1080" controls>
-            <source src="video\engagement_ceremony.mp4" type="video/mp4">
-            <source src="video\engagement_ceremony.webm" type="video/webm">
+            <source src="video\engagement.mp4" type="video/mp4">
+            <source src="video\engagement.webm" type="video/webm">
             Error: it seems like your browser does not support this video format.
           </video>
         </div>
@@ -207,8 +207,83 @@
 
       <section id="theDate">
         <h1 id="theDateTitle" style="background-color:#ffd5d5; color: #f0f0f0;">
-          ぼくらの特別な日 - Our Special Date
+          Our Special Date - 我們最特別的日子
         </h1>
+        <table id="calendarContainer">
+          <tr id="calendarTitle">
+            <td class="dateTitle" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">Sun</td>
+            <td class="dateTitle">Mon</td>
+            <td class="dateTitle">Tue</td>
+            <td class="dateTitle">Wed</td>
+            <td class="dateTitle">Thu</td>
+            <td class="dateTitle">Fri</td>
+            <td class="dateTitle" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;">Sat</td>
+          </tr>
+          <tr class="calendarPageBreak">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr id="firstWeek">
+            <td class="dateContainer" style="border-top-left-radius: 10px;">&nbsp;</td>
+            <td class="dateContainer">&nbsp;</td>
+            <td class="dateContainer">&nbsp;</td>
+            <td class="dateContainer">&nbsp;</td>
+            <td class="dateContainer">&nbsp;</td>
+            <td class="dateContainer">1<br>十月</td>
+            <td class="markedDateContainer" style="border-top-right-radius: 10px;">2<br>初二</td>
+          </tr>
+          <tr id="secondWeek">
+            <td class="dateContainer">3<br>初三</td>
+            <td class="dateContainer">4<br>初四</td>
+            <td class="dateContainer">5<br>初五</td>
+            <td class="dateContainer">6<br>初六</td>
+            <td class="dateContainer">7<br>立冬</td>
+            <td class="dateContainer">8<br>初八</td>
+            <td class="dateContainer">9<br>初九</td>
+          </tr>
+          <tr id="thirdWeek">
+            <td class="markedDateContainer">10<br>初十</td>
+            <td class="dateContainer">11<br>十一</td>
+            <td class="dateContainer">12<br>十二</td>
+            <td class="dateContainer">13<br>十三</td>
+            <td class="dateContainer">14<br>十四</td>
+            <td class="dateContainer">15<br>十五</td>
+            <td class="dateContainer">16<br>十六</td>
+          </tr>
+          <tr id="forthWeek">
+            <td class="dateContainer">17<br>十七</td>
+            <td class="dateContainer">18<br>十八</td>
+            <td class="dateContainer">19<br>十九</td>
+            <td class="dateContainer">20<br>二十</td>
+            <td class="dateContainer">21<br>廿一</td>
+            <td class="dateContainer">22<br>小雪</td>
+            <td class="dateContainer">23<br>廿三</td>
+          </tr>
+          <tr id="fifthWeek">
+            <td class="dateContainer" style="border-bottom-left-radius: 10px;">24<br>廿四</td>
+            <td class="dateContainer">25<br>廿五</td>
+            <td class="dateContainer">26<br>廿六</td>
+            <td class="dateContainer">27<br>廿七</td>
+            <td class="dateContainer">28<br>廿八</td>
+            <td class="dateContainer">29<br>廿九</td>
+            <td class="dateContainer" style="border-bottom-right-radius: 10px;">30<br>三十</td>
+          </tr>
+        </table>
+        <table>
+          <tr id="groomSidePartyDate">
+            <td></td>
+          </tr>
+        </table>
+        <table>
+          <tr id="brideSidePartyDate">
+            <td></td>
+          </tr>
+        </table>
       </section>
     </div>
 
