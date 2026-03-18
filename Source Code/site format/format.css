@@ -13,6 +13,9 @@ body {
   width: 100%;
   height: 100%;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   animation-name: rollUpSplashScreen;
   animation-duration: 1s;
   animation-delay: 10s;
@@ -38,11 +41,16 @@ body {
   }
 }
 
+#splashContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+}
+
 #splashSiteLogo {
-  min-height: 10%;
-  max-width: 10%;
-  margin-top: 15rem;
-  margin-left: 70rem;
+  max-width: 120px;
   animation-name: bounceSplashSiteLogo;
   animation-duration: 3s;
   animation-delay: 1s;
@@ -66,12 +74,12 @@ body {
 }
 
 #splashSiteName {
-  font-size: 6rem;
+  font-size: clamp(2.5rem, 5vw, 6rem);
   font-style: italic;
   font-family: "Times New Roman", Times, serif, cursive;
   color: #ffffff;
-  margin-top: 3rem;
-  margin-left: 62rem;
+  margin-top: 2rem;
+  text-align: center;
   animation-name: spinSplashSiteName;
   animation-duration: 2s;
   animation-iteration-count: 1;
@@ -93,9 +101,9 @@ body {
   background-color: #cecece;
   border-radius: 5px;
   min-height: 2rem;
+  width: 70%;
   max-width: 75rem;
-  margin-top: 7rem;
-  margin-left: 40rem;
+  margin-top: 4rem;
 }
 
 #loadingProgress {
@@ -134,6 +142,9 @@ body {
   height: 0%;
   overflow: hidden;
   z-index: 999;
+  /* Firefox scrollbar colors */
+  scrollbar-width: thin;
+  scrollbar-color: #ff7878 #ffffff;
   animation-name: initPageContent;
   animation-duration: 1s;
   animation-delay: 9s;
@@ -151,6 +162,31 @@ body {
   }
 }
 
+/* Custom scrollbar styling for #pageContent */
+#pageContent::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+#pageContent::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin-top: 10vh;
+}
+
+#pageContent::-webkit-scrollbar-thumb {
+  background-color: #ff7878;
+  border-radius: 4px;
+}
+
+#pageContent::-webkit-scrollbar-thumb:hover {
+  background-color: #ff5050;
+}
+
+#pageContent::-webkit-scrollbar-corner {
+  background-color: #ffffff;
+}
+
 /* Section Break */
 .sectionBreak {
   position: static;
@@ -160,51 +196,83 @@ body {
   align-content: center;
 }
 
-/* Page Header */
+/* Page Header - Always-visible top navigation bar */
 #navigationMenu {
   background-color: #ffb0b0;
   position: fixed;
-  overflow: hidden;
-  height: auto;
-  min-width: 99%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1.5rem;
   z-index: 998;
+  box-sizing: border-box;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
 }
 
+#navigationMenu.navVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide full nav bar when scrolled past ourStory */
+#navigationMenu.navScrollHidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Scroll-triggered centered menu bar (shown past #ourStoryPage) */
+#scrollNavBar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background-color: #ffb0b0;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 8.8px 8.8px 0px 0px #ff7878;
+  padding: 0.6rem 1.2rem;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  max-width: 90%;
+  overflow-x: auto;
+}
+
+#scrollNavBar.scrollNavVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
 #headerContainer {
-  min-width: 44%;
-  margin-left: 3rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 #siteLogo {
-  position: fixed;
-  display: inline-block;
-}
-
-@media screen and (min-width: 961px) {
-  #siteLogo {
-    max-width: 7.5rem;
-    min-height: 7.5rem;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  #siteLogo {
-    max-width: 5rem;
-    min-height: 5rem;
-  }
+  position: relative;
+  display: block;
+  max-width: 6rem;
+  min-height: 6rem;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 #siteName {
   color: #ffffff;
   font-size: 0;
-  text-align: center;
   display: inline-block;
-  margin-top: 1rem;
-  margin-left: 10rem;
-  margin-right: 35rem;
+  margin-left: 1.2rem;
+  margin-top: 0;
+  margin-right: 0;
 }
 
 #siteName span {
@@ -212,6 +280,7 @@ body {
   font-style: italic;
   font-family: "Times New Roman", Times, serif, cursive;
   font-weight: 500;
+  font-size: 3rem;
   animation-name: wavingText;
   animation-duration: 1.5s;
   animation-timing-function: ease;
@@ -219,108 +288,76 @@ body {
   animation-delay: calc(0.1s * var(--i));
 }
 
-@media screen and (min-width: 961px) {
-  #siteName span {
-    font-size: 3.5rem;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  #siteName span {
-    font-size: 2.75rem;
-  }
-}
-
 @keyframes wavingText {
   0% {
     top: 0px;
   }
   50% {
-    top: -15px;
+    top: -10px;
   }
   100% {
     top: 0px;
   }
 }
 
+/* Hamburger button (right side of top bar) */
+#hamburgerBtn {
+  display: block;
+  background-color: rgba(255, 176, 176, 0.85);
+  border: 0;
+  border-radius: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 1.5rem;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+  order: 3;
+}
+
+#hamburgerBtn:hover {
+  background-color: #ff7878;
+}
+
+#hamburgerBtn i {
+  font-size: 2.5rem;
+  margin: 0;
+  float: none;
+  color: #ffffff;
+}
+
+/* Menu panel - inline in the nav bar, hidden by default */
+#menuPanel {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.4s ease;
+  white-space: nowrap;
+  order: 2;
+  margin-left: auto;
+  margin-right: 0.8rem;
+}
+
+/* Show menu tabs when .menuOpen is on #navigationMenu */
+#navigationMenu.menuOpen #menuPanel {
+  max-width: 900px;
+  opacity: 1;
+}
+
+/* Menu tab items inside the nav bar */
 .menuTab {
   color: #ffffff !important;
-  text-align: left !important;
   text-decoration: none !important;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  margin: 0 0.6rem;
   border-radius: 10px;
-  max-width: fit-content;
-}
-
-@media screen and (min-width: 961px) {
-  .menuTab {
-    min-height: 20%;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .menuTab {
-    min-height: 10%;
-  }
-}
-
-.menuTitle {
-  list-style-type: none;
-  display: inline-block;
-  margin-left: 0.5rem;
-  margin-right: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
-  padding: 0;
-}
-
-.menuTitleEN {
-  font-style: italic;
-  font-family: "Times New Roman", Times, sans-serif;
-}
-
-.menuTitleCN {
-  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
-    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-}
-
-@media screen and (min-width: 961px) {
-  .menuTitleEN {
-    font-size: 2.25rem;
-  }
-
-  .menuTitleJP {
-    font-size: 2rem;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .menuTitleEN {
-    font-size: 2rem;
-  }
-
-  .menuTitleJP {
-    font-size: 1.5rem;
-  }
-}
-
-i:nth-of-type(1) {
-  color: #ffffff;
-  margin-top: 2.5rem;
-  margin-left: 1.5rem;
-  float: left;
-}
-
-@media screen and (min-width: 961px) {
-  i:nth-of-type(1) {
-    font-size: 2.5rem;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  i:nth-of-type(1) {
-    font-size: 2rem;
-  }
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .menuTab:hover {
@@ -328,18 +365,23 @@ i:nth-of-type(1) {
   text-shadow: 2px 2px 4px #000000;
 }
 
-i:hover {
+.menuTab i {
+  color: #ffffff;
+  font-size: 1.8rem;
+  margin: 0;
+  margin-right: 1.2rem;
+  float: none;
+  flex-shrink: 0;
+}
+
+.menuTab i:hover {
   animation-name: bounceIcon;
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
 }
 
 @keyframes bounceIcon {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
+  0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
   }
   40% {
@@ -350,24 +392,47 @@ i:hover {
   }
 }
 
+.menuTitle {
+  list-style-type: none;
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0;
+}
+
+.menuTitleEN {
+  font-style: italic;
+  font-family: "Times New Roman", Times, sans-serif;
+  font-size: 1.8rem;
+}
+
+.menuTitleCN {
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka,
+    "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 1.45rem;
+}
+
+/* Scroll to top button */
 #topBtn {
   position: fixed;
-  color: none;
   border: 0;
   border-radius: 20px;
   height: fit-content;
   width: fit-content;
-  padding: 2rem;
-  transform: translate(92vw, 1vh);
+  padding: 1.5rem;
+  right: 1.2rem;
+  bottom: 2rem;
   display: none;
-  z-index: 998;
+  z-index: 997;
+  background-color: rgba(255, 176, 176, 0.85);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-i:only-child {
+#topBtn i {
   color: #ffffff;
-  font-size: 3rem;
-  margin-top: 0;
-  margin-left: 0;
+  font-size: 2.5rem;
+  margin: 0;
+  float: none;
 }
 
 #topBtn:hover {
@@ -375,26 +440,86 @@ i:only-child {
 }
 
 /* Wedding Photo Wrapper */
+#imgWrapperOuter {
+  position: relative;
+}
+
+#leftArrowBtn, #rightArrowBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  border-radius: 20px;
+  padding: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.3s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#leftArrowBtn {
+  left: 1rem;
+}
+
+#rightArrowBtn {
+  right: 1rem;
+}
+
+#leftArrowBtn i, #rightArrowBtn i {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin: 0;
+  float: none;
+}
+
+#imgWrapperOuter:hover #leftArrowBtn,
+#imgWrapperOuter:hover #rightArrowBtn {
+  opacity: 1;
+  pointer-events: auto;
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+#leftArrowBtn:active, #rightArrowBtn:active {
+  background-color: rgba(200, 200, 200, 0.85) !important;
+}
+
 #imgWrapper {
   background-color: #ffb0b0;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
+  scrollbar-width: none;
+  height: calc(75vh + 10vh);
+  padding-top: 10vh;
+  box-sizing: border-box;
+}
+
+#imgWrapper::-webkit-scrollbar {
+  display: none;
 }
 
 #imgWrapperContainer {
-  margin-top: 12vh;
-  margin-bottom: 2vh;
+  height: 75vh;
+  display: flex;
+  align-items: stretch;
+  padding-top: 1vh;
+  padding-bottom: 1.5vh;
+  box-sizing: border-box;
 }
 
 .weddingPhoto {
-  max-height: 500px;
-  max-width: 800px;
-  padding-top: 2vh;
-  padding-bottom: 1.5vh;
+  height: 100%;
+  width: auto;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
   padding-left: 0.4vw;
   padding-right: 0.4vw;
-  display: inline-block;
 }
 
 .weddingPhoto:hover {
@@ -405,6 +530,11 @@ i:only-child {
 /* Page Body - Our Story */
 #storyPanel {
   background-color: #ffcaca;
+}
+
+#storyPanel table {
+  width: 100%;
+  table-layout: fixed;
 }
 
 #storyPanelTitle {
@@ -422,8 +552,9 @@ i:only-child {
   border: 1px solid #dddddd;
   border-radius: 5px;
   height: 350px;
-  width: 550px;
-  margin-left: 10vw;
+  width: 100%;
+  max-width: 550px;
+  margin-left: 3vw;
   padding: 7px;
   transform: rotate(-5deg);
 }
@@ -433,9 +564,10 @@ i:only-child {
   border: 1px solid #dddddd;
   border-radius: 5px;
   height: 350px;
-  width: 550px;
+  width: 100%;
+  max-width: 550px;
   margin-top: 2vh;
-  margin-left: 15vw;
+  margin-left: 5vw;
   padding: 7px;
   transform: rotate(10deg);
 }
@@ -445,9 +577,10 @@ i:only-child {
   border: 1px solid #dddddd;
   border-radius: 5px;
   height: 300px;
-  width: 450px;
-  margin-top: 15rem;
-  margin-right: 5rem;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 17rem;
+  margin-right: 2rem;
   padding: 7px;
   transform: rotate(7deg);
 }
@@ -457,9 +590,10 @@ i:only-child {
   border: 1px solid #dddddd;
   border-radius: 5px;
   height: 300px;
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   margin-top: 2rem;
-  margin-right: 5rem;
+  margin-right: 2rem;
   padding: 7px;
   transform: rotate(-15deg);
 }
@@ -469,9 +603,10 @@ i:only-child {
   border: 1px solid #dddddd;
   border-radius: 5px;
   height: 300px;
-  width: 500px;
-  margin-top: 8rem;
-  margin-right: 5rem;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 4rem;
+  margin-right: 2rem;
   padding: 7px;
   transform: rotate(-3deg);
 }
@@ -481,10 +616,11 @@ i:only-child {
   font-size: 22px;
   font-weight: 550;
   line-height: 1.6;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   padding: 5px;
   word-break: keep-all;
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 
 #story2 {
@@ -492,12 +628,13 @@ i:only-child {
   font-size: 22px;
   font-weight: 550;
   line-height: 1.6;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   padding: 5px;
   word-break: keep-all;
-  margin-top: 13rem;
-  margin-left: 12rem;
-  margin-right: 5rem;
+  margin-top: 15rem;
+  margin-left: 5.5rem;
+  margin-right: 2rem;
 }
 
 #storyPanelEnd {
@@ -513,11 +650,16 @@ i:only-child {
 
 #shortClipPanel {
   background-color: #ffcaca;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 3rem;
 }
 
 #shortClip {
-  margin-left: 23rem;
-  margin-bottom: 5rem;
+  max-width: 90%;
+  width: 1080px;
+  height: auto;
+  margin-bottom: 2rem;
 }
 
 /* Page Body - Our Special Date */
@@ -534,12 +676,26 @@ i:only-child {
   text-shadow: 2px 2px 4px #000000;
 }
 
+#theDateLayout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5rem 2rem 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+#partyDatesColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
 #groomSidePartyDate {
   background-color: #ffd5d5;
   color: #ffffff;
-  margin-left: 2rem;
-  margin-top: 5rem;
-  text-align: left;
+  text-align: right;
   font-weight: bold;
   font-size: 20px;
 }
@@ -547,17 +703,16 @@ i:only-child {
 #brideSidePartyDate {
   background-color: #ffd5d5;
   color: #ffffff;
-  margin-left: 2rem;
-  margin-top: 5rem;
-  text-align: left;
+  text-align: right;
   font-weight: bold;
   font-size: 20px;
+  margin-top: auto;
 }
 
 #calendarContainer {
-  margin-left: 10rem;
-  margin-top: 5rem;
   color: #ffffff;
+  width: fit-content;
+  flex-shrink: 0;
 }
 
 .dateTitle {
@@ -580,10 +735,11 @@ i:only-child {
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  transition: background-color 0.2s ease;
 }
 
 .markedDateContainer {
-  background-color: #ffb0b0;
+  background-color: #ff9999;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 30px;
@@ -591,6 +747,7 @@ i:only-child {
   text-align: center;
   font-weight: bold;
   font-size: 20px;
+  transition: background-color 0.2s ease;
 }
 
 .calendarPageBreak {
@@ -606,4 +763,445 @@ i:only-child {
 .markedDateContainer:hover {
   background-color: #ff7878;
   text-shadow: 2px 2px 4px #000000;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   Breakpoints:
+     Small/Mobile:        ≤ 576px
+     Tablet/Small Laptop: 577px - 992px
+     Desktop:             993px - 1279px
+     Large Screen/TV:     ≥ 1280px
+   ========================================== */
+
+/* ---- Large Screen / TV (≥ 1280px) ---- */
+@media screen and (min-width: 1280px) {
+  #navigationMenu {
+    padding: 1rem 2rem;
+  }
+
+  #siteLogo {
+    max-width: 7.5rem;
+    min-height: 7.5rem;
+  }
+
+  #siteName span {
+    font-size: 3.5rem;
+  }
+
+  #hamburgerBtn {
+    padding: 1.8rem;
+  }
+
+  #leftArrowBtn, #rightArrowBtn {
+    padding: 1.8rem;
+  }
+
+  #hamburgerBtn i {
+    font-size: 3rem;
+  }
+
+  #leftArrowBtn i, #rightArrowBtn i {
+    font-size: 3rem;
+  }
+
+  #scrollNavBar {
+    padding: 0.8rem 1.8rem;
+    border-radius: 0 0 30px 30px;
+  }
+
+  .menuTitleEN {
+    font-size: 2.1rem;
+  }
+
+  .menuTitleCN {
+    font-size: 1.7rem;
+  }
+
+  .menuTab i {
+    font-size: 2.1rem;
+  }
+
+  .menuTab {
+    padding: 0.8rem 1.2rem;
+    margin: 0 0.8rem;
+  }
+
+  #imgWrapper {
+    padding-top: 12vh;
+    height: calc(75vh + 12vh);
+  }
+
+  #pageContent::-webkit-scrollbar-track {
+    margin-top: 12vh;
+  }
+
+  #storyPanelTitle, #theDateTitle {
+    font-size: 70px;
+  }
+
+  #storyPanelEnd {
+    font-size: 48px;
+  }
+
+  #storyImg1, #storyImg2 {
+    height: 400px;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  #storyImg3, #storyImg4, #storyImg5 {
+    height: 350px;
+    width: 100%;
+    max-width: 530px;
+  }
+
+  #story1, #story2 {
+    font-size: 24px;
+    width: 100%;
+    max-width: 680px;
+  }
+
+  .dateTitle, .dateContainer, .markedDateContainer {
+    padding: 22px 35px;
+    font-size: 22px;
+  }
+
+  #topBtn {
+    padding: 1.8rem;
+  }
+
+  #topBtn i {
+    font-size: 3rem;
+  }
+}
+
+/* ---- Desktop (993px - 1279px) ---- */
+@media screen and (min-width: 993px) and (max-width: 1279px) {
+  #pageContent {
+    overflow-x: auto !important;
+  }
+  #siteName span {
+    font-size: 2.2rem;
+  }
+
+  #storyImg1, #storyImg2 {
+    height: 330px;
+    width: 100%;
+    max-width: 520px;
+  }
+
+  #storyImg3, #storyImg4, #storyImg5 {
+    height: 280px;
+    width: 100%;
+    max-width: 430px;
+  }
+
+  #story1, #story2 {
+    width: 100%;
+    max-width: 550px;
+    font-size: 21px;
+  }
+}
+
+/* ---- Tablet / Small Laptop (577px - 992px) ---- */
+@media screen and (max-width: 992px) {
+  #pageContent {
+    overflow-x: auto !important;
+  }
+  #navigationMenu {
+    padding: 0.6rem 1rem;
+  }
+
+  #siteLogo {
+    max-width: 4.5rem;
+    min-height: 4.5rem;
+  }
+
+  #siteName span {
+    font-size: 2rem;
+  }
+
+  #hamburgerBtn i {
+    font-size: 1.7rem;
+  }
+
+  #leftArrowBtn i, #rightArrowBtn i {
+    font-size: 1.7rem;
+  }
+
+  .menuTitleEN {
+    font-size: 1.2rem;
+  }
+
+  .menuTitleCN {
+    font-size: 1rem;
+  }
+
+  .menuTab i {
+    font-size: 1.2rem;
+  }
+
+  .menuTab {
+    padding: 0.4rem 0.6rem;
+    margin: 0 0.4rem;
+  }
+
+  #menuPanel {
+    margin-right: 0.4rem;
+  }
+
+  #scrollNavBar {
+    padding: 0.5rem 0.8rem;
+    max-width: 95%;
+  }
+
+  #imgWrapper {
+    padding-top: 9vh;
+    height: calc(75vh + 9vh);
+  }
+
+  #pageContent::-webkit-scrollbar-track {
+    margin-top: 9vh;
+  }
+
+  #storyPanelTitle {
+    font-size: 42px;
+    padding-bottom: 30px;
+  }
+
+  #storyPanelEnd {
+    font-size: 28px;
+  }
+
+  #theDateTitle {
+    font-size: 42px;
+  }
+
+  #storyImg1, #storyImg2 {
+    height: 250px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: 2vw;
+  }
+
+  #storyImg3, #storyImg4, #storyImg5 {
+    height: 220px;
+    width: 100%;
+    max-width: 350px;
+    margin-right: 1rem;
+  }
+
+  #story1, #story2 {
+    width: 100%;
+    max-width: 350px;
+    font-size: 17px;
+    margin-left: 1.5rem;
+  }
+
+  #story2 {
+    margin-top: 6rem;
+    margin-left: 5rem;
+  }
+
+  .dateTitle, .dateContainer, .markedDateContainer {
+    padding: 15px 18px;
+    font-size: 16px;
+  }
+}
+
+/* ---- Small / Mobile (≤ 576px) ---- */
+@media screen and (max-width: 576px) {
+  /* Top bar */
+  #pageContent {
+    overflow-x: auto !important;
+  }
+  #navigationMenu {
+    padding: 0.4rem 0.6rem;
+  }
+
+  #siteLogo {
+    max-width: 3.5rem;
+    min-height: 3.5rem;
+  }
+
+  #siteName span {
+    font-size: 1.5rem;
+  }
+
+  #hamburgerBtn {
+    padding: 0.8rem;
+  }
+
+  #leftArrowBtn, #rightArrowBtn {
+    padding: 0.8rem;
+  }
+
+  #hamburgerBtn i {
+    font-size: 1.6rem;
+  }
+
+  #leftArrowBtn i, #rightArrowBtn i {
+    font-size: 1.6rem;
+  }
+
+  #scrollNavBar {
+    padding: 0.4rem 0.4rem;
+    max-width: 100%;
+    border-radius: 0 0 16px 16px;
+    flex-wrap: wrap;
+  }
+
+  /* Menu drops down below nav bar on mobile */
+  #menuPanel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    flex-direction: column;
+    background-color: #ffb0b0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    max-width: none !important;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    padding: 0 0.6rem;
+    margin: 0;
+    white-space: normal;
+  }
+
+  #navigationMenu.menuOpen #menuPanel {
+    max-width: none !important;
+    max-height: 400px;
+    opacity: 1;
+    padding: 0.5rem 0.6rem;
+  }
+
+  .menuTitleEN {
+    font-size: 0.9rem;
+  }
+
+  .menuTitleCN {
+    font-size: 0.75rem;
+  }
+
+  .menuTab i {
+    font-size: 0.9rem;
+    margin-right: 0.8rem;
+  }
+
+  .menuTab {
+    padding: 0.4rem 0.6rem;
+    margin: 0.2rem 0;
+    width: 100%;
+  }
+
+  #imgWrapper {
+    padding-top: 7vh;
+    height: calc(75vh + 7vh);
+  }
+
+  #pageContent::-webkit-scrollbar-track {
+    margin-top: 7vh;
+  }
+
+  /* Story section - stack vertically */
+  #storyPanelTitle {
+    font-size: 24px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+  }
+
+  #storyPanel table {
+    display: block;
+  }
+
+  #storyPanel table tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #storyPanel table td {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  #storyImg1, #storyImg2 {
+    width: 88%;
+    max-width: 400px;
+    height: auto;
+    margin: 0.8rem auto;
+    display: block;
+    transform: rotate(0deg);
+  }
+
+  #storyImg3, #storyImg4, #storyImg5 {
+    width: 85%;
+    max-width: 360px;
+    height: auto;
+    margin: 0.8rem auto;
+    display: block;
+    transform: rotate(0deg);
+  }
+
+  #story1, #story2 {
+    width: auto;
+    font-size: 14px;
+    margin: 0.8rem 1rem;
+    padding: 0 0.5rem;
+  }
+
+  #story2 {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+  }
+
+  #storyPanelEnd {
+    font-size: 18px;
+    padding-top: 6vh;
+    padding-bottom: 3vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Calendar */
+  #theDateTitle {
+    font-size: 24px;
+  }
+
+  .dateTitle, .dateContainer, .markedDateContainer {
+    padding: 8px 4px;
+    font-size: 11px;
+  }
+
+  #dateLayout {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+
+  #partyDatesColumn {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #groomSidePartyDate, #brideSidePartyDate {
+    font-size: 14px;
+    text-align: left;
+    margin-top: 0;
+  }
+
+  /* Top button */
+  #topBtn {
+    right: 0.6rem;
+    bottom: 1.2rem;
+    padding: 0.8rem;
+  }
+
+  #topBtn i {
+    font-size: 1.6rem;
+  }
 }

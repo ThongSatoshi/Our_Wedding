@@ -1,57 +1,98 @@
 let topBtn = document.getElementById("topBtn");
 let pageContent = document.getElementById("pageContent");
 let navigationMenu = document.getElementById("navigationMenu");
-let headerContainer = document.getElementById("headerContainer");
 let siteLogo = document.getElementById("siteLogo");
-let siteName = document.getElementById("siteName");
 let shortClip = document.getElementById("shortClip");
+let hamburgerBtn = document.getElementById("hamburgerBtn");
+let menuPanel = document.getElementById("menuPanel");
+let ourStoryPage = document.getElementById("ourStoryPage");
+let scrollNavBar = document.getElementById("scrollNavBar");
+let leftArrowBtn = document.getElementById("leftArrowBtn");
+let rightArrowBtn = document.getElementById("rightArrowBtn");
+
+// Show navigation bar after initPageContent animation ends, then start auto-scroll from first photo
+pageContent.addEventListener("animationend", () => {
+  navigationMenu.classList.add("navVisible");
+
+  // Scroll to first photo centered, then start the interval
+  currentPhotoIndex = 0;
+  const firstPhoto = weddingPhotos[0];
+  const firstTargetScroll = firstPhoto.offsetLeft - (imgWrapper.offsetWidth / 2) + (firstPhoto.offsetWidth / 2);
+  imgWrapper.scrollTo({ left: firstTargetScroll, behavior: "smooth" });
+
+  setInterval(autoScrollPhotos, 15000);
+});
+
+// Toggle menu open/close on click
+hamburgerBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  navigationMenu.classList.toggle("menuOpen");
+});
+
+// Close menu when any menu tab is clicked (navigate + close)
+document.querySelectorAll(".menuTab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    navigationMenu.classList.remove("menuOpen");
+  });
+});
+
+// Close menu when clicking/tapping anywhere outside the nav bar
+document.addEventListener("click", (e) => {
+  if (!navigationMenu.contains(e.target)) {
+    navigationMenu.classList.remove("menuOpen");
+  }
+});
 
 pageContent.onscroll = () => {
-  shrinkNavigationMenu();
   showTopBtn();
-};
-
-// Shrink navigation menu and rearrange menu tabs when scrolls down past x amount of px
-function shrinkNavigationMenu() {
-  if (pageContent.scrollTop > 80) {
-    navigationMenu.style.minWidth = "62%";
-    navigationMenu.style.paddingLeft = "5.5rem";
-    navigationMenu.style.paddingTop = "0.5rem";
-    navigationMenu.style.paddingBottom = "0.5rem";
-    navigationMenu.style.borderBottomLeftRadius = "10px";
-    navigationMenu.style.borderBottomRightRadius = "10px";
-    navigationMenu.style.boxShadow = "8px 8px #ff7878";
-    navigationMenu.style.transform = "translateX(30%)";
-    headerContainer.style.display = "none";
+  // Swap nav bars when scrolled past the ourStory section
+  if (pageContent.scrollTop >= ourStoryPage.offsetTop) {
+    navigationMenu.classList.add("navScrollHidden");
+    scrollNavBar.classList.add("scrollNavVisible");
   } else {
-    navigationMenu.style.minWidth = "99%";
-    navigationMenu.style.paddingLeft = "0";
-    navigationMenu.style.paddingTop = "1rem";
-    navigationMenu.style.paddingBottom = "1rem";
-    navigationMenu.style.borderBottomLeftRadius = "0";
-    navigationMenu.style.borderBottomRightRadius = "0";
-    navigationMenu.style.boxShadow = "none";
-    navigationMenu.style.transform = "translateX(0)";
-    headerContainer.style.display = "block";
-  };
+    navigationMenu.classList.remove("navScrollHidden");
+    scrollNavBar.classList.remove("scrollNavVisible");
+  }
 };
 
-// Autoscroll animation for wedding photos
-let weddingPhotoIdArr = [];
-for (i = 1; i < 11; i++) {
-  var str = "weddingPhoto" + i;
-  weddingPhotoIdArr.push(str);
-  console.log(weddingPhotoIdArr);
+// Auto-scroll wedding photos every 10 seconds
+let imgWrapper = document.getElementById("imgWrapper");
+let weddingPhotos = document.querySelectorAll(".weddingPhoto");
+let currentPhotoIndex = 0;
+
+function autoScrollPhotos() {
+  currentPhotoIndex = (currentPhotoIndex + 1) % weddingPhotos.length;
+  const photo = weddingPhotos[currentPhotoIndex];
+  const targetScroll = photo.offsetLeft - (imgWrapper.offsetWidth / 2) + (photo.offsetWidth / 2);
+  imgWrapper.scrollTo({
+    left: targetScroll,
+    behavior: "smooth"
+  });
 };
 
-if (pageContent.style.width == "100%" && pageContent.style.height == "100%") {
-  window.setInterval(autoScrollImg(false), 10000);
-};
+// Left/right arrow buttons scroll to previous/next photo
+leftArrowBtn.addEventListener("click", () => {
+  currentPhotoIndex = (currentPhotoIndex - 1 + weddingPhotos.length) % weddingPhotos.length;
+  const photo = weddingPhotos[currentPhotoIndex];
+  const targetScroll = photo.offsetLeft - (imgWrapper.offsetWidth / 2) + (photo.offsetWidth / 2);
+  imgWrapper.scrollTo({ left: targetScroll, behavior: "smooth" });
+});
 
-function autoScrollImg(isStop) {
-  if (isStop == false) {
-    console.log((n += 1));
-  } else {
-    return;
-  };
-};
+rightArrowBtn.addEventListener("click", () => {
+  currentPhotoIndex = (currentPhotoIndex + 1) % weddingPhotos.length;
+  const photo = weddingPhotos[currentPhotoIndex];
+  const targetScroll = photo.offsetLeft - (imgWrapper.offsetWidth / 2) + (photo.offsetWidth / 2);
+  imgWrapper.scrollTo({ left: targetScroll, behavior: "smooth" });
+});
+
+// Center clicked wedding photo in the imgWrapper
+weddingPhotos.forEach((photo, index) => {
+  photo.addEventListener("click", () => {
+    currentPhotoIndex = index;
+    const targetScroll = photo.offsetLeft - (imgWrapper.offsetWidth / 2) + (photo.offsetWidth / 2);
+    imgWrapper.scrollTo({
+      left: targetScroll,
+      behavior: "smooth"
+    });
+  });
+});
