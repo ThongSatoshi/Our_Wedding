@@ -423,9 +423,10 @@ body {
   bottom: 2rem;
   display: none;
   z-index: 997;
-  background-color: rgba(255, 176, 176, 0.85);
+  background-color: #ffb0b0;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  box-shadow: 5px 5px 0px 0px #ff7878;
 }
 
 #topBtn i {
@@ -437,6 +438,12 @@ body {
 
 #topBtn:hover {
   background-color: #ff7878;
+}
+
+#topBtn:hover i {
+  animation-name: bounceIcon;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 }
 
 /* Wedding Photo Wrapper */
@@ -679,10 +686,14 @@ body {
 #theDateLayout {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
   padding: 5rem 2rem 3rem;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+#theDateLayout.dateLayoutLeft {
+  justify-content: flex-start;
 }
 
 #partyDatesColumn {
@@ -690,29 +701,86 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-self: stretch;
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+#partyDatesColumn .calendarPageBreak {
+  display: none;
 }
 
 #groomSidePartyDate {
-  background-color: #ffd5d5;
-  color: #ffffff;
-  text-align: right;
+  text-align: left;
   font-weight: bold;
   font-size: 20px;
+  color: #ffffff;
+  display: none;
+  opacity: 0;
 }
 
 #brideSidePartyDate {
-  background-color: #ffd5d5;
-  color: #ffffff;
-  text-align: right;
+  text-align: left;
   font-weight: bold;
   font-size: 20px;
-  margin-top: auto;
+  color: #ffffff;
+  display: none;
+  opacity: 0;
+}
+
+#groomSidePartyDate.partyDateVisible,
+#brideSidePartyDate.partyDateVisible {
+  display: table-row;
+  animation: partyDateFadeIn 0.8s ease forwards;
+}
+
+#groomSidePartyDate.partyDateHiding,
+#brideSidePartyDate.partyDateHiding {
+  display: table-row;
+  animation: partyDateFadeOut 0.5s ease forwards;
+}
+
+@keyframes partyDateFadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes partyDateFadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+#groomSidePartyDate p, #brideSidePartyDate p {
+  background-color: #ffb0b0!important;
+  border-radius: 10px;
+  margin: 0;
+  max-width: 630px;
+}
+
+.partyImg {
+  width: 100%;
+  max-width: 630px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 1rem;
+  display: none;
+}
+
+.partyImg.partyImgActive {
+  display: block;
+  animation: partyImgFadeIn 0.8s ease;
+}
+
+@keyframes partyImgFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 #calendarContainer {
   color: #ffffff;
   width: fit-content;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .dateTitle {
@@ -751,7 +819,7 @@ body {
 }
 
 .calendarPageBreak {
-  background-color: #ffd5d5;
+  background-color: transparent;
   font-size: 10px;
 }
 
@@ -867,6 +935,11 @@ body {
     font-size: 22px;
   }
 
+  .partyImg {
+    max-width: 700px;
+    height: 400px;
+  }
+
   #topBtn {
     padding: 1.8rem;
   }
@@ -901,6 +974,11 @@ body {
     width: 100%;
     max-width: 550px;
     font-size: 21px;
+  }
+
+  .partyImg {
+    max-width: 500px;
+    height: 300px;
   }
 }
 
@@ -1007,6 +1085,11 @@ body {
   .dateTitle, .dateContainer, .markedDateContainer {
     padding: 15px 18px;
     font-size: 16px;
+  }
+
+  .partyImg {
+    max-width: 350px;
+    height: 220px;
   }
 }
 
@@ -1177,9 +1260,14 @@ body {
     font-size: 11px;
   }
 
-  #dateLayout {
+  #theDateLayout {
     flex-direction: column;
+    align-items: center;
     padding: 2rem 1rem;
+  }
+
+  #theDateLayout.dateLayoutLeft {
+    align-items: flex-start;
   }
 
   #partyDatesColumn {
@@ -1192,6 +1280,11 @@ body {
     font-size: 14px;
     text-align: left;
     margin-top: 0;
+  }
+
+  .partyImg {
+    max-width: 250px;
+    height: 160px;
   }
 
   /* Top button */
