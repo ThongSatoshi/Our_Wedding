@@ -96,3 +96,115 @@ weddingPhotos.forEach((photo, index) => {
     });
   });
 });
+
+// Party venue image slideshow — only runs when panel is visible
+let partySlideTimers = {};
+
+function startPartySlideshow(sectionId) {
+  let section = document.getElementById(sectionId);
+  let imgs = section.querySelectorAll(".partyImg");
+  if (imgs.length === 0) return;
+
+  // Reset: show first image
+  imgs.forEach(img => img.classList.remove("partyImgActive"));
+  imgs[0].classList.add("partyImgActive");
+  let idx = 0;
+
+  partySlideTimers[sectionId] = setInterval(() => {
+    imgs[idx].classList.remove("partyImgActive");
+    idx = (idx + 1) % imgs.length;
+    imgs[idx].classList.add("partyImgActive");
+  }, 15000);
+}
+
+function stopPartySlideshow(sectionId) {
+  if (partySlideTimers[sectionId]) {
+    clearInterval(partySlideTimers[sectionId]);
+    partySlideTimers[sectionId] = null;
+  }
+  let section = document.getElementById(sectionId);
+  section.querySelectorAll(".partyImg").forEach(img => img.classList.remove("partyImgActive"));
+}
+
+// Click Nov 2 -> toggle groomSidePartyDate, click Nov 10 -> toggle brideSidePartyDate
+let nov2Date = document.getElementById("nov2Date");
+let nov10Date = document.getElementById("nov10Date");
+let groomPanel = document.getElementById("groomSidePartyDate");
+let bridePanel = document.getElementById("brideSidePartyDate");
+let theDateLayout = document.getElementById("theDateLayout");
+
+function updateDateLayout() {
+  let anyVisible = groomPanel.classList.contains("partyDateVisible") || bridePanel.classList.contains("partyDateVisible");
+  if (anyVisible) {
+    theDateLayout.classList.add("dateLayoutLeft");
+  } else {
+    theDateLayout.classList.remove("dateLayoutLeft");
+  }
+}
+
+function showPartyPanel(panel, sectionId) {
+  panel.classList.remove("partyDateHiding");
+  panel.classList.add("partyDateVisible");
+  startPartySlideshow(sectionId);
+  updateDateLayout();
+}
+
+function hidePartyPanel(panel, sectionId) {
+  panel.classList.remove("partyDateVisible");
+  panel.classList.add("partyDateHiding");
+  stopPartySlideshow(sectionId);
+  panel.addEventListener("animationend", function handler() {
+    panel.classList.remove("partyDateHiding");
+    panel.removeEventListener("animationend", handler);
+    updateDateLayout();
+  });
+}
+
+nov2Date.addEventListener("click", () => {
+  // Hide bride panel if visible
+  if (bridePanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(bridePanel, "brideSidePartyDate");
+  }
+  // Toggle groom panel
+  if (groomPanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(groomPanel, "groomSidePartyDate");
+  } else {
+    showPartyPanel(groomPanel, "groomSidePartyDate");
+  }
+});
+
+nov10Date.addEventListener("click", () => {
+  // Hide groom panel if visible
+  if (groomPanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(groomPanel, "groomSidePartyDate");
+  }
+  // Toggle bride panel
+  if (bridePanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(bridePanel, "brideSidePartyDate");
+  } else {
+    showPartyPanel(bridePanel, "brideSidePartyDate");
+  }
+});
+
+// Click any other date cell (not Nov 2 or Nov 10) -> hide all party panels
+document.getElementById("calendarContainer").addEventListener("click", (e) => {
+  let td = e.target.closest("td");
+  if (!td || td === nov2Date || td === nov10Date) return;
+  if (groomPanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(groomPanel, "groomSidePartyDate");
+  }
+  if (bridePanel.classList.contains("partyDateVisible")) {
+    hidePartyPanel(bridePanel, "brideSidePartyDate");
+  }
+});
+
+// Set calendarContainer height to half of groomSidePartyDate
+let calendarContainer = document.getElementById("calendarContainer");
+let groomSidePartyDate = document.getElementById("groomSidePartyDate");
+
+function syncCalendarHeight() {
+  calendarContainer.style.height = (groomSidePartyDate.offsetHeight / 2.05) + "px";
+}
+
+syncCalendarHeight();
+window.addEventListener("resize", syncCalendarHeight);
